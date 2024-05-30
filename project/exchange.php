@@ -1,4 +1,5 @@
 <?php include("./template/header.php") ?>
+
 <?php include("./template/sidebar.php") ?>
 
 <section class=" bg-gray-50 p-5 mt-5 rounded-md ">
@@ -41,4 +42,7 @@
     </form>
 
 </section>
+
+
+
 <?php include("./template/footer.php") ?>
