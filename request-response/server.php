@@ -11,6 +11,7 @@ header("Location:about.html");
 // echo "You are {$_POST['your_name']}";
 
 
+
 // print_r($_FILES);
 
 // echo "You are {$_GET['your_name']} and you was born in {$_GET['birthday']}";
