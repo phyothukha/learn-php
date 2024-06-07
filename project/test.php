@@ -4,39 +4,14 @@
 // var_dump(file_exists("my.text"));
 // print_r(scandir("."));
 // unlink("my.text");
-// rmdir("myname");
 
+// var_dump(rmdir("photos"));
 
-// pathinfo(".");
-// $fileName = "myname.txt";
+// $
 
-// if (file_exists($fileName)) {
-//     touch($fileName);
-// }
+// $array1 = array("a" => "green", "red", "blue", "red");
+// $array2 = array("b" => "green", "yellow", "red");
 
-// $filestream = fopen($fileName, "r");
-// echo fgetc($filestream, 15);
-
-// touch("record.php");
-
-// $fileName = "saveRecord.txt";
-
-// if (file_exists($fileName)) {
-//     touch($fileName);
-// }
-// $fileStream = fopen($fileName, "r");
-// echo fread($fileStream, 1024);
-
-
-$content = file_get_contents("http://forex.cbm.gov.mm/api/latest");
-print_r(json_decode($content)->rates);
-
-
-
-// fwrite($filestream, "Phyo");
-// fwrite($filestream, " Thu");
-// fwrite($filestream, " Kha");
-
-// fclose($filestream);
-
-// unlink($fileName); 
+// $result = array_diff($array2, $array1);
+// print_r($result);
+touch("create-products.php");
