@@ -3,7 +3,7 @@
 
 <section class=" p-10 bg-gray-100 mt-10 rounded-md">
 
-    <form action="" enctype="multipart/form-data" method="post">
+    <form action="./products-process.php" enctype="multipart/form-data" method="post">
         <div class=" flex flex-col gap-5 mb-5">
             <div class="max-w-full">
                 <label for="input-label" class="block text-sm font-medium mb-2 dark:text-white">Products</label>
@@ -50,7 +50,7 @@
             </div>
         </div>
         <div class=" flex  justify-end">
-            <button type="button" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+            <button type="submit" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
                 Submit
             </button>
         </div>
