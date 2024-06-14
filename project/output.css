@@ -754,8 +754,16 @@ video {
   height: 25px;
 }
 
+.h-10 {
+  height: 2.5rem;
+}
+
 .max-h-72 {
   max-height: 18rem;
+}
+
+.w-10 {
+  width: 2.5rem;
 }
 
 .w-64 {
@@ -869,6 +877,10 @@ video {
 
 .justify-between {
   justify-content: space-between;
+}
+
+.gap-1 {
+  gap: 0.25rem;
 }
 
 .gap-2 {
@@ -1050,6 +1062,24 @@ video {
 
 .bg-opacity-50 {
   --tw-bg-opacity: 0.5;
+}
+
+.fill-gray-300 {
+  fill: #d1d5db;
+}
+
+.fill-yellow-400 {
+  fill: #facc15;
+}
+
+.object-cover {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.object-center {
+  -o-object-position: center;
+     object-position: center;
 }
 
 .p-1 {
