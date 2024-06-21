@@ -1,8 +1,4 @@
 <?php
-
-print_r($_POST);
-
-
 $id = $_POST['row_id'];
 $name = $_POST["name"];
 $price = $_POST["price"];
