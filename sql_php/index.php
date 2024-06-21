@@ -10,7 +10,10 @@ $query = mysqli_query($conn, $sql);
 
 ?>
 
-<?php require_once("./tempate/header.php") ?>
+<?php require_once('./template/header.php') ?>
+<?php require_once('./template/sidebar.php') ?>
+
+
 
 <h1>Create Product</h1>
 <form action="./save.php" method="post">
@@ -58,4 +61,4 @@ $query = mysqli_query($conn, $sql);
     </tbody>
 </table>
 
-<?php require_once('./tempate/footer.php') ?>
+<?php require_once('./template/footer.php') ?>
