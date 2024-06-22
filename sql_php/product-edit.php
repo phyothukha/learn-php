@@ -1,19 +1,3 @@
-<?php
-$conn = mysqli_connect("localhost", "ptk", "21934576", "phyrous_shop");
-
-if (!$conn) {
-    die(mysqli_connect_errno());
-}
-
-$id = $_GET['row_id'];
-
-$sql = "SELECT * FROM products where id= $id";
-$query = mysqli_query($conn, $sql);
-$row = mysqli_fetch_assoc($query);
-?>
-
-
-
 <?php require_once("./template/header.php") ?>
 <?php require_once("./template/sidebar.php") ?>
 
@@ -35,9 +19,14 @@ $row = mysqli_fetch_assoc($query);
         </li>
     </ol>
     <hr class=" my-3  border-gray-200">
+    <?php
+    $id = $_GET['row_id'];
 
-
-    <form action="./update.php" method="post">
+    $sql = "SELECT * FROM products where id= $id";
+    $query = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($query);
+    ?>
+    <form action="./product-update.php" method="post">
         <h1 class=" text-xl font-medium mb-5">Update Product</h1>
         <div class=" flex gap-5 items-end ">
             <input type="hidden" name="row_id" id="row_id" value="<?= $row['id'] ?>" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" placeholder="Enter Product Name">
