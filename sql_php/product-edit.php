@@ -2,8 +2,6 @@
 <?php require_once("./template/sidebar.php") ?>
 
 <section class=" bg-gray-50 p-5 mt-5 rounded-md ">
-
-
     <ol class="flex items-center whitespace-nowrap ">
         <li class="inline-flex items-center">
             <a class="flex items-center text-sm text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600 dark:text-neutral-500 dark:hover:text-blue-500 dark:focus:text-blue-500" href="#">
@@ -13,7 +11,6 @@
                 <path d="m9 18 6-6-6-6"></path>
             </svg>
         </li>
-
         <li class="inline-flex items-center text-sm font-semibold text-gray-800 truncate dark:text-neutral-200" aria-current="page">
             Product
         </li>
@@ -21,7 +18,6 @@
     <hr class=" my-3  border-gray-200">
     <?php
     $id = $_GET['row_id'];
-
     $sql = "SELECT * FROM products where id= $id";
     $query = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($query);
