@@ -29,7 +29,7 @@
         <div class=" flex flex-col gap-5 w-full items-end ">
             <div class=" w-full">
                 <label for="name" class="block text-sm font-medium mb-2 dark:text-white">Batch Name</label>
-                <input type="text" name="name" id="name" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" placeholder="Enter Product Name">
+                <input type="text" name="name" id="name" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" placeholder="Enter Batch Name">
             </div>
             <div class=" w-full">
                 <label for="input-label" class="block text-sm font-medium mb-2 dark:text-white">Select Course</label>
@@ -43,7 +43,7 @@
                 "extraMarkup": "<div class=\"absolute top-1/2 end-3 -translate-y-1/2\"><svg class=\"flex-shrink-0 size-3.5 text-gray-500 dark:text-neutral-500\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"m7 15 5 5 5-5\"/><path d=\"m7 9 5-5 5 5\"/></svg></div>"
                 }' name="course_id" class="hidden">
                     <?php
-                    $sql = "SELECT * FROM courses ";
+                    $sql = "SELECT * FROM courses";
                     $query = mysqli_query($conn, $sql);
                     while ($row = mysqli_fetch_assoc($query)) :
                     ?>
@@ -53,8 +53,12 @@
                 </select>
             </div>
             <div class=" w-full">
-                <label for="stock" class="block text-sm font-medium mb-2 dark:text-white">Start Date</label>
-                <input type="date" name=" stock" id="stock" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" placeholder="Pick Date">
+                <label for="start_date" class="block text-sm font-medium mb-2 dark:text-white">Start Date</label>
+                <input type="date" name="start_date" id="start_date" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" placeholder="Pick Date">
+            </div>
+            <div class=" w-full">
+                <label for="student_limit" class="block text-sm font-medium mb-2 dark:text-white">Student Limit</label>
+                <input type="number" name="student_limit" id="student_limit" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" placeholder="Enter student limit">
             </div>
 
             <div class=" flex gap-5 w-full">
@@ -70,12 +74,12 @@
 
 
             <div class=" w-full">
-                <input type="checkbox" name="is_register_open" class="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-checked-checkbox" checked="">
+                <input type="checkbox" value="1" name="is_register_open" class="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-checked-checkbox">
                 <label for="hs-checked-checkbox" class="text-sm text-gray-500 ms-3 dark:text-neutral-400">Register</label>
             </div>
 
             <button type="submit" name="calculate" class=" max-w-sm px-5 py-3 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
-                Create
+                Create Batch
             </button>
         </div>
     </form>

@@ -1,17 +1,15 @@
 <?php
 
-
-require_once "./template/sql_connect.php";
-
-
-print_r($_GET["row_id"]);
-
-$id = $_GET["row_id"];
+require_once('./template/sql_connect.php');
 
 
-$sql = "DELETE FROM products where id=$id";
+$id = $_GET['row_id'];
+
+$sql = "DELETE FROM batches WHERE id=$id";
+
 $query = mysqli_query($conn, $sql);
 
+
 if ($query) {
-    header("Location:product-list.php");
+    header("Location:batch-list.php");
 }

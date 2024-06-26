@@ -20,6 +20,7 @@
     <?php
     $sql = "SELECT * FROM courses";
     $query = mysqli_query($conn, $sql);
+     
     ?>
     <form action="./course-save.php" method="post">
         <h1 class=" text-xl font-medium mb-5">Create Course</h1>
