@@ -1,6 +1,11 @@
 <?php require_once('./template/header.php') ?>
 <?php require_once('./template/sidebar.php') ?>
+<!--- Pagination Logic 
 
+recordPerpage
+totalrecord
+totalPage
+--->
 
 <?php
 $sql = "SELECT *,students.id as student_id FROM students  LEFT JOIN nationality  ON nationality.id= students.national_id LEFT JOIN gender ON gender.id=students.gender_id ";
@@ -12,12 +17,26 @@ if (isset($_GET['q'])) {
     $sql .= " WHERE name LIKE '%$q%' ";
     $countSql .= " WHERE name LIKE '%$q%' ";
 }
-$sql .= ' LIMIT 5';
 
+if (isset($_GET['sort_by']) && isset($_GET['order'])) {
+    $sortBy = $_GET['sort_by'];
+    $order = $_GET['order'];
+    $sql .= " ORDER BY $sortBy $order";
+}
+
+$recordPerPage = 5;
 $countQuery = mysqli_query($conn, $countSql);
-$query = mysqli_query($conn, $sql);
-$counobj = mysqli_fetch_assoc($countQuery);
 
+$countobj = mysqli_fetch_assoc($countQuery);
+$totalRecord = $countobj['total_student'];
+$totalPage = ceil($totalRecord / $recordPerPage);
+$currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
+$offset = ($currentPage - 1) * $recordPerPage;
+$sql .= " LIMIT $offset,$recordPerPage";
+$query = mysqli_query($conn, $sql);
+
+$start = $currentPage > 3 ? $currentPage - 3 : 1;
+$end = $currentPage + 3 < $totalPage ? $currentPage + 3 : $totalPage;
 ?>
 <section class=" bg-gray-50 overflow-scroll w-fit p-5 m-5 rounded-md ">
     <ol class="flex items-center whitespace-nowrap ">
@@ -65,18 +84,33 @@ $counobj = mysqli_fetch_assoc($countQuery);
     <div class=" min-w-full overflow-x-auto inline-block align-middle">
         <div class=" flex justify-between items-center">
             <h1 class=" text-xl font-medium my-5">Students List</h1>
-            <?php if (isset($_GET['q'])) : ?>
-                <h1>
-                    Search result(<?= $counobj['total_student'] ?>) By name=<?= $_GET['q'] ?>
-                </h1>
-            <?php endif; ?>
+            <h1>
+                Search result (<?= $totalRecord; ?>)
+                <?php if (isset($_GET['q'])) : ?>
+                    By name=<?= $_GET['q'] ?>
+                <?php endif; ?>
+            </h1>
         </div>
         <div class="overflow-hidden">
             <table class="">
                 <thead>
                     <tr>
                         <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">#</th>
-                        <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Name</th>
+                        <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500 flex  items-center gap-2">
+                            Name
+                            <div class=" flex flex-col">
+                                <a href="./student-list.php?sort_by=name&order=asc" class=" hover:bg-gray-300 p-0.5 transform transition duration-500 rounded-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-3">
+                                        <path fill-rule="evenodd" d="M9.47 6.47a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 1 1-1.06 1.06L10 8.06l-3.72 3.72a.75.75 0 0 1-1.06-1.06l4.25-4.25Z" clip-rule="evenodd" />
+                                    </svg>
+                                </a>
+                                <a href="./student-list.php?sort_by=name&order=desc" class=" hover:bg-gray-300 p-0.5 transform transition duration-500 rounded-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-3">
+                                        <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </th>
                         <th scope="col" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Birth Date</th>
                         <th scope="col" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase inline-block w-40 dark:text-neutral-500">Pocket Money</th>
                         <th scope="col" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Created</th>
@@ -124,6 +158,38 @@ $counobj = mysqli_fetch_assoc($countQuery);
 
     </div>
 
+
+    <!-- Pagination -->
+    <nav class="flex items-center gap-x-1">
+        <a href="./student-list.php?page=<?= $currentPage - 1 > 0 ?  $currentPage - 1 : 1 ?><?= isset($_GET['q']) ? '&q=' . $_GET['q'] : '' ?>" class="min-h-[38px] 
+         <?= $currentPage <= 1 ?  "bg-gray-200" : "" ?>
+         min-w-[38px] py-2 px-2.5 inline-flex justify-center items-center gap-x-2 text-sm rounded-lg border border-transparent text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:border-transparent dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10">
+            <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m15 18-6-6 6-6"></path>
+            </svg>
+            <span aria-hidden="true" class="sr-only">Previous</span>
+        </a>
+        <div class="flex items-center gap-x-1">
+            <?php for ($i = $start; $i <= $end; $i++) : ?>
+                <a href="./student-list.php?page=<?= $i ?><?= isset($_GET['q']) ? '&q=' . $_GET['q'] : '' ?><?= (isset($_GET['sort_by']) && isset($_GET['order'])) ? '&sort_by=' . $_GET['sort_by'] . "&order=" . $_GET['order'] : '' ?>
+                " class="min-h-[38px] min-w-[38px] flex justify-center items-center
+                <?= $currentPage == $i ? 'border border-gray-200' : '' ?>
+                 text-gray-800 py-2 px-3 text-sm rounded-lg focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:border-neutral-700 dark:text-white dark:focus:bg-white/10" aria-current="page">
+                    <?= $i ?>
+                </a>
+            <?php endfor; ?>
+        </div>
+        <a href="./student-list.php?page=<?= $currentPage < $totalPage ? $currentPage + 1 : $totalPage ?><?= isset($_GET['q']) ? '&q=' . $_GET['q'] : '' ?><?= (isset($_GET['sort_by']) && isset($_GET['order'])) ? '&sort_by=' . $_GET['sort_by'] . "&order=" . $_GET['order'] : '' ?>
+        " class="min-h-[38px]
+        <?= $currentPage >= $totalPage ?  "bg-gray-200" : "" ?>
+        min-w-[38px] py-2 px-2.5 inline-flex justify-center items-center gap-x-2 text-sm rounded-lg border border-transparent text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:border-transparent dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10">
+            <span aria-hidden="true" class="sr-only">Next</span>
+            <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m9 18 6-6-6-6"></path>
+            </svg>
+        </a>
+    </nav>
+    <!-- End Pagination -->
 
 </section>
 
