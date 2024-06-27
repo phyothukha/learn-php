@@ -3,19 +3,19 @@
 require_once('./template/sql_connect.php');
 
 
-$name = $_POST['name'];
-$course_id = $_POST['course_id'];
-$start_date = $_POST['start_date'];
-$student_limit = $_POST['student_limit'];
-$start_time = $_POST['start_time'];
-$end_time = $_POST['end_time'];
-$is_register_open = isset($_POST['is_register_open']) ? $_POST['is_register_open'] : 0;
 
-$sql = "INSERT INTO batches (name,course_id,start_date,start_time,end_time,student_limit,is_register_open) 
-VALUES ('$name',$course_id,'$start_date','$start_time','$end_time',$student_limit,$is_register_open)";
+$name = $_POST['name'];
+$national_id = $_POST['national_id'];
+$date_of_birth = $_POST['date_of_birth'];
+$pocket_money = $_POST['pocket_money'];
+$gender_id = $_POST['gender_id'];
+
+
+$sql = "INSERT INTO students (name,national_id,date_of_birth,gender_id,pocket_money) 
+VALUES ('$name',$national_id,'$date_of_birth','$gender_id',$pocket_money)";
 
 $query = mysqli_query($conn, $sql);
 
 if ($query) {
-    header("Location:batch-list.php");
+    header("Location:student-list.php");
 }
