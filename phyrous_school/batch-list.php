@@ -37,6 +37,7 @@
                         <th scope="col" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Time</th>
                         <th scope="col" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Register</th>
                         <th scope="col" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Student Limit</th>
+                        <th scope="col" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Student Count</th>
                         <th scope="col" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Created</th>
                         <th scope="col" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Action</th>
                     </tr>
@@ -44,7 +45,7 @@
                 <tbody class="divide-y divide-gray-200 dark:divide-neutral-700">
                     <?php
                     echo "<pre>";
-                    $sql = "SELECT *,batches.id as batch_id FROM batches  LEFT JOIN courses  ON courses.id= batches.course_id";
+                    $sql = "SELECT *,batches.id as batch_id,( SELECT COUNT(id) FROM enrollments WHERE enrollments.batch_id= batches.id ) as student_count FROM batches  LEFT JOIN courses  ON courses.id= batches.course_id";
                     $query = mysqli_query($conn, $sql);
                     while ($row = mysqli_fetch_assoc($query)) : ?>
                         <tr>
@@ -65,6 +66,9 @@
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200 text-end">
                                 <?= ($row['student_limit']) ?>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200 text-end">
+                                <?= ($row['student_count']) ?>
                             </td>
 
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200 text-end">
