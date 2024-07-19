@@ -11,19 +11,15 @@
                 <path d="m9 18 6-6-6-6"></path>
             </svg>
         </li>
-
         <li class="inline-flex items-center text-sm font-semibold text-gray-800 truncate dark:text-neutral-200" aria-current="page">
             Manage Course
         </li>
     </ol>
     <hr class=" my-3  border-gray-200">
     <?php
-    // $sql = "SELECT * FROM courses";
     $sql = "SELECT *, (SELECT COUNT(id) FROM batches WHERE courses.id=batches.course_id) as batch_count, 
     (SELECT count(id) FROM enrollments WHERE enrollments.batch_id IN (SELECT id FROM batches WHERE batches.id= enrollments.batch_id)) as student_count FROM courses ";
     $query = mysqli_query($conn, $sql);
-
-
 
     "SELECT *,(SELECT count(id) FROM batches WHERE courses.id=batches.course_id) AS batch_count,(SELECT count(id) FROM enrollments WHERE enrollments.batch_id IN (SELECT id FROM batches WHERE courses.id=batches.course_id)) AS student_count FROM courses"
 
