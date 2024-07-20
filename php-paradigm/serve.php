@@ -3,4 +3,5 @@
 
 $port = 8090;
 
-exec("php -S localhost:$port");
+$startingPoint = __DIR__ . "/public";
+exec("php -S localhost:$port -t  $startingPoint");

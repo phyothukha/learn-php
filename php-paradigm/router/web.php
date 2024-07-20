@@ -1,7 +1,7 @@
 <?php
 
 $routes = [
-    "/" => "home",
-    "/about" => "about",
-    "/service" => "service"
+    "/" => "page@home",
+    "/about" => "page@about",
+    "/service" => "page@service"
 ];
