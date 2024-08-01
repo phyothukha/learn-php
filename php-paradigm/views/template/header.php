@@ -25,6 +25,7 @@
                     <a href="<?= url("about") ?>" class="mr-5 hover:text-gray-900">About</a>
                     <a href="<?= url("service") ?>" class="mr-5 hover:text-gray-900">Service</a>
                     <a href="<?= url("course") ?>" class="mr-5 hover:text-gray-900">Course</a>
+                    <a href="<?= url("batch") ?>" class="mr-5 hover:text-gray-900">Batch</a>
                 </nav>
                 <button class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">Login
                     <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
