@@ -2,15 +2,15 @@
 
 function home()
 {
-    echo "Home function is working";
+    return view("home");
 }
 
 function about()
 {
-    echo "About function is working";
+    return view("about");
 }
 
 function service()
 {
-    echo "service function is working";
+    return view("service");
 }

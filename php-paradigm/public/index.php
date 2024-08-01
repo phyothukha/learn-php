@@ -1,5 +1,3 @@
 <?php
 
-
-// echo "public index is working!";
-require_once "../index.php";
+require_once "../bootstrap.php";

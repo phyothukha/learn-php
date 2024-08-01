@@ -7,7 +7,7 @@ function view(string $file): bool
 }
 
 
-function controller($fileFunction): void
+function controller(string $fileFunction): void
 {
     $arr =  explode("@", $fileFunction);
     $controllerFile = $arr[0];
@@ -31,4 +31,25 @@ function routing($routes): void
     } else {
         view("notfound");
     }
+}
+
+
+function assest(string $filePath): string
+{
+    $fullUrl = isset($_SERVER["HTTPS"]) ? "https" : "http" . "://" . $_SERVER["HTTP_HOST"] . "/" . ltrim($filePath, "/");
+
+    return $fullUrl;
+}
+
+function url(string $filePath): string
+{
+    $fullUrl = isset($_SERVER["HTTPS"]) ? "https" : "http" . "://" . $_SERVER["HTTP_HOST"] . "/" . ltrim($filePath, "/");
+
+    return $fullUrl;
+}
+
+
+function template(string $name): void
+{
+    require_once __DIR__ . "/views/template/" . $name . ".php";
 }
