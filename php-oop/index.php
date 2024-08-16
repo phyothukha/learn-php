@@ -1,8 +1,35 @@
 <?php
 // system("clear");
 echo "<pre>";
+require_once "./autoload.php";
+// require_once "./classes/PrentClass.php";
 
-// require_once "./classes/Db.php";
+
+// $p = new ParentClass("aa", "bb", "cc");
+// print_r($p);
+
+// $c = new Child("aaa", "vvv", "ccc", "hello", "world");
+// print_r($c);
+
+// $students = new Student;
+
+// print_r($students
+//     ->select()
+//     ->limit(5)
+//     ->fetchAll());
+
+// $batch = new Batch;
+
+// print_r($batch
+//     ->select()
+//     ->fetchAll());
+// $course = new Course;
+// print_r($course
+//     ->select()
+//     ->limit(5)
+//     ->fetchAll());
+
+
 
 // $db = new Db();
 // print_r($db->first("SELECT * FROM students LIMIT 10"));
@@ -47,19 +74,24 @@ echo "<pre>";
 
 // print_r($facebook);
 
-require_once "./classes/BankAccount.php";
+// require_once "./classes/BankAccount.php";
 
 
-$bankAccount = new BankAccount("Phyo Thu Kha", 300);
+// $bankAccount = new BankAccount("Phyo Thu Kha", 300);
 
-$bankAccount->deposit(500);
-$bankAccount->withDraw(200);
-$bankAccount->transfer("atm", 300);
-echo "<br>";
-$bankAccount->onlineDeposit("wave pay", 200);
-echo "<br>";
-echo $bankAccount->checkBalance();
+// $bankAccount->deposit(500);
+// $bankAccount->withDraw(200);
+// $bankAccount->transfer("atm", 300);
+// echo "<br>";
+// $bankAccount->onlineDeposit("wave pay", 200);
+// echo "<br>";
+// echo $bankAccount->checkBalance();
 // $bankAccount->setBalance(200);
 
+
+
+
+
+// print_r($parent);
 
 // echo $bankAccount->getBalance();
