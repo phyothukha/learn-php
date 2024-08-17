@@ -1,5 +1,6 @@
 <?php
 
+//encapsulation concept 
 class BankAccount
 {
     private $balanceHolder;

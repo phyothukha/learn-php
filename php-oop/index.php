@@ -6,7 +6,17 @@ require_once "./autoload.php";
 
 
 // $p = new ParentClass("aa", "bb", "cc");
+
+
 // print_r($p);
+$request = new Request();
+echo $request->get();
+echo $request->file();
+echo $request->files();
+echo $request->length();
+echo $request->post();
+
+
 
 // $c = new Child("aaa", "vvv", "ccc", "hello", "world");
 // print_r($c);
