@@ -9,14 +9,23 @@ require_once "./autoload.php";
 
 
 // print_r($p);
-$request = new Request();
-echo $request->get();
-echo $request->file();
-echo $request->files();
-echo $request->length();
-echo $request->post();
+// $request = new Request();
+// echo $request->get();
+// echo $request->file();
+// echo $request->files();
+// echo $request->length();
+// echo $request->post();
 
 
+function makeSound(Animal $animal)
+{
+    return $animal->makeSound();
+}
+
+$cat = new Cat;
+$dog = new Dog;
+echo makeSound($cat);
+echo makeSound($dog);
 
 // $c = new Child("aaa", "vvv", "ccc", "hello", "world");
 // print_r($c);
