@@ -1,0 +1,19 @@
+{
+    "name": "phyrous/hello",
+    "description": "san kyi tar par byar",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Phyrous\\Hello\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "phyothukha"
+        }
+    ],
+    "require": {
+        "monolog/monolog": "^3.7",
+        "guzzlehttp/guzzle": "^7.9"
+    }
+}
