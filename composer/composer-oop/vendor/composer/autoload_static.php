@@ -4,12 +4,16 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitcbffacdc22799bd911e3bce4ca004b0b
+class ComposerStaticInita718c0fe18434c8480ae3da5bd6fb019
 {
     public static $prefixLengthsPsr4 = array (
         'S' => 
         array (
             'Symfony\\Component\\Dotenv\\' => 25,
+        ),
+        'A' => 
+        array (
+            'App\\' => 4,
         ),
     );
 
@@ -17,6 +21,10 @@ class ComposerStaticInitcbffacdc22799bd911e3bce4ca004b0b
         'Symfony\\Component\\Dotenv\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/dotenv',
+        ),
+        'App\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
         ),
     );
 
@@ -27,9 +35,9 @@ class ComposerStaticInitcbffacdc22799bd911e3bce4ca004b0b
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitcbffacdc22799bd911e3bce4ca004b0b::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitcbffacdc22799bd911e3bce4ca004b0b::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitcbffacdc22799bd911e3bce4ca004b0b::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInita718c0fe18434c8480ae3da5bd6fb019::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInita718c0fe18434c8480ae3da5bd6fb019::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInita718c0fe18434c8480ae3da5bd6fb019::$classMap;
 
         }, null, ClassLoader::class);
     }

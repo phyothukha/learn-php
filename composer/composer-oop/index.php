@@ -1,11 +1,15 @@
 <?php
 
-use Symfony\Component\Dotenv\Dotenv;
+use App\Mms\Dev;
+// use Symfony\Component\Dotenv\Dotenv;
+
 
 require_once "./bootstrap.php";
 
-$dotenv = new Dotenv();
+// $dotenv = new Dotenv();
 
-$dotenv->load(__DIR__ . "/.env");
+// $dotenv->load(__DIR__ . "/.env");
 
-print_r($_ENV);
+// print_r($dotenv);
+$dev = new Dev;
+print_r($dev);

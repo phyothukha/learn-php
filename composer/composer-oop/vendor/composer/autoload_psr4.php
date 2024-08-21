@@ -7,4 +7,5 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Symfony\\Component\\Dotenv\\' => array($vendorDir . '/symfony/dotenv'),
+    'App\\' => array($baseDir . '/src'),
 );

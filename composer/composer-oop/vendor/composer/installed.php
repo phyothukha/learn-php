@@ -1,19 +1,19 @@
 <?php return array(
     'root' => array(
-        'name' => '__root__',
+        'name' => 'phyrsous/testing',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '6888b70c7635b2af29076f13f63729f97bc0e4a5',
+        'reference' => 'd49735c52408053c3d8ff7fd32ba4b9278a20ad1',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'dev' => true,
     ),
     'versions' => array(
-        '__root__' => array(
+        'phyrsous/testing' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '6888b70c7635b2af29076f13f63729f97bc0e4a5',
+            'reference' => 'd49735c52408053c3d8ff7fd32ba4b9278a20ad1',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
